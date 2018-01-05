@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mantis_auto
+namespace mantis_auto 
 {
-    class AccountHelper
+
+    class AccountHelper : AuthTestBase
     {
     }
 }

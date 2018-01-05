@@ -25,7 +25,6 @@ namespace mantis_auto
         public ProjectHelper OpenManageProjects()
         {
             //driver.FindElement(By.XPath(".//a[contains(text(),'Manage Projects')]")).Click();
-
             System.Threading.Thread.Sleep(1000);
             driver.FindElement(By.XPath(".//a[.='Manage Projects']")).Click();
             return this;
@@ -89,6 +88,7 @@ namespace mantis_auto
         }
         private ProjectHelper SaveProject()
         {
+            System.Threading.Thread.Sleep(1000);
             driver.FindElement(By.XPath("//input[@value='Add Project']")).Click();
             return this;
         }

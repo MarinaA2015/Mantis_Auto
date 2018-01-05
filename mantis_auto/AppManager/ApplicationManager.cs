@@ -69,7 +69,10 @@ namespace mantis_auto
                 
                 newInstance.driver.Url = "http://localhost/mantisbt-2.9.0/mantisbt-2.9.0/login_page.php";
                 app.Value = newInstance;
+               
+
             }
+            
 
             return app.Value;
         }

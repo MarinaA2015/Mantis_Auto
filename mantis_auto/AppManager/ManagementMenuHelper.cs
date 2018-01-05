@@ -16,6 +16,7 @@ namespace mantis_auto
 
         public void OpenManagement()
         {
+            System.Threading.Thread.Sleep(1000);
             driver.FindElement(By.XPath(".//*[@class='menu-text'][contains(text(),'Manage')]")).Click();
             //driver.FindElement(By.TagName("span")).Text("Manage");
         }

@@ -15,10 +15,11 @@ namespace mantis_auto
             app.Login.LoginToTheSystem(new AccountData("administrator", "root"));
         }
 
-        [Test]
+        /*[Test]
         public void Logout()
+
         {
             app.Login.LogOut();
-        }
+        }*/
     }
 }
