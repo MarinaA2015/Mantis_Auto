@@ -13,7 +13,7 @@ namespace mantis_auto
         protected ApplicationManager app;
         public static bool PERFORM_LONG_UI_CHECK = true;
 
-        [SetUp]
+        [TestFixtureSetUp]
         public void SetupApplicationManager()
         {
             

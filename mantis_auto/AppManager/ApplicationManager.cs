@@ -33,6 +33,9 @@ namespace mantis_auto
             Login = new LoginHelper(this);
             LeftMenu = new ManagementMenuHelper(this);
             Project = new ProjectHelper(this);
+            Ftp = new FTPHelper(this);
+            James = new JamesHelper(this);
+            Mail = new MailHelper(this);
 
            
         }
@@ -60,6 +63,9 @@ namespace mantis_auto
         internal LoginHelper Login { get; private set; }
         internal ManagementMenuHelper LeftMenu { get; private set; }
         internal ProjectHelper Project { get; private set; }
+        public FTPHelper Ftp { get; private set; }
+        internal JamesHelper James { get; private set; }
+        public MailHelper Mail { get; private set; }
 
         public static ApplicationManager GetInstance()
         {
