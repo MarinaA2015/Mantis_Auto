@@ -21,19 +21,21 @@ namespace mantis_auto
             FillRegistrationForm(account);
             SubmitRegistration();
             String url = GetConfirmationUrl(account);
-            FillPasswordForm();
+            FillPasswordForm(url,account);
             SubmitPasswordForm();
 
         }
 
         private void SubmitPasswordForm()
         {
-            throw new NotImplementedException();
+            manager.Driver.FindElement(By.CssSelector("button[type = 'submit']")).Click();
         }
 
-        private void FillPasswordForm()
+        private void FillPasswordForm(String url,AccountData account)
         {
-            throw new NotImplementedException();
+            driver.Url = url;
+            driver.FindElement(By.Id("password")).SendKeys(account.Password);
+            driver.FindElement(By.Id("password-confirm")).SendKeys(account.Password);
         }
 
         private string GetConfirmationUrl(AccountData account)

@@ -24,10 +24,10 @@ namespace mantis_auto
         [Test]
         public void TestAccountRegistration()
         {
-            AccountData account = new AccountData("testuser16", "password")
+            AccountData account = new AccountData("testuser26", "password")
             {
            
-                Email = "testuser16@localhost.localdomain"
+                Email = "testuser26@localhost.localdomain"
             };
             
             app.James.Delete(account);
