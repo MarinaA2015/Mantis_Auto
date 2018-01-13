@@ -24,11 +24,17 @@ namespace mantis_auto
         [Test]
         public void TestAccountRegistration()
         {
-            AccountData account = new AccountData("testuser26", "password")
+            List<AccountData> accounts = app.Admin.GetAllAccounts();
+            AccountData account = new AccountData("testuser30", "password")
             {
            
-                Email = "testuser26@localhost.localdomain"
+                Email = "testuser30@localhost.localdomain"
             };
+            //accounts.Find(x=>x.Name == account.Name);
+            if (accounts.Contains(account))
+            {
+                app.Admin.DeleteAccount(account);
+            }
             
             app.James.Delete(account);
             app.James.Add(account);
@@ -37,6 +43,7 @@ namespace mantis_auto
             Console.Out.WriteLine(account.Password);
             app.Registration.Register(account);
         }
+
         [TestFixtureTearDown]
         public void RestoreConfig()
         {

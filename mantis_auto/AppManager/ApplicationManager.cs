@@ -26,7 +26,7 @@ namespace mantis_auto
             options.BrowserExecutableLocation = @"C:\Program Files\Mozilla Firefox\firefox.exe";
 
             driver = new FirefoxDriver(options);
-            baseURL = "http://localhost/";
+            baseURL = "http://localhost/mantisbt-2.9.0/mantisbt-2.9.0";
             verificationErrors = new StringBuilder();
 
             Registration = new RegistrationHelper(this);
@@ -36,6 +36,7 @@ namespace mantis_auto
             Ftp = new FTPHelper(this);
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
+            Admin = new AdminHelper(this,baseURL);
 
            
         }
@@ -66,6 +67,7 @@ namespace mantis_auto
         public FTPHelper Ftp { get; private set; }
         internal JamesHelper James { get; private set; }
         public MailHelper Mail { get; private set; }
+        internal AdminHelper Admin { get; private set; }
 
         public static ApplicationManager GetInstance()
         {
