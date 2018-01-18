@@ -22,15 +22,19 @@ namespace mantis_auto
         {
             List<AccountData> accounts = new List<AccountData>();
             IWebDriver driver = OpenAppAndLogin();
-            driver.Url = baseUrl + "/ manage_user_page.php";
+            driver.Url = baseUrl + "/manage_user_page.php";
             IList<IWebElement> rows = driver.FindElements(By.CssSelector(".table-hover td>a"));
+            //Console.Out.WriteLine("rows number: " + rows.Count);
             foreach(IWebElement el in rows)
             {
-                IWebElement link = el.FindElement(By.TagName("a"));
-                string name = link.Text;
-                string href = link.GetAttribute("href");
+                //IWebElement link = el.FindElement(By.TagName("a"));
+                string name = el.Text;
+                //Console.Out.WriteLine("name: " + name);
+                string href = el.GetAttribute("href");
+                
                 Match m = Regex.Match(href, @"\d+$");
                 string id = m.Value;
+                //Console.Out.WriteLine("id: " + id);
                 accounts.Add(new AccountData()
                 {
                     Name = name,
@@ -42,8 +46,9 @@ namespace mantis_auto
 
         public void DeleteAccount(AccountData account)
         {
-            IWebDriver driver = OpenAppAndLogin();
+            //IWebDriver driver = OpenAppAndLogin();
             driver.Url = baseUrl + "/manage_user_edit_page.php?user_id=" + account.Id;
+            System.Threading.Thread.Sleep(1000);
             driver.FindElement(By.CssSelector("input[value = 'Delete User']")).Click();
             driver.FindElement(By.CssSelector("input[value = 'Delete Account']")).Click();
 
@@ -51,14 +56,16 @@ namespace mantis_auto
 
         private IWebDriver OpenAppAndLogin()
         {
-            IWebDriver driver = new SimpleBrowserDriver();
+            //IWebDriver driver = new SimpleBrowserDriver();
+            IWebDriver driver = manager.Driver;
+            //if (manager.Login.IsLoggedIn()) manager.Login.LogOut();
             driver.Url = baseUrl + "/login_page.php";
             Console.Out.WriteLine("on the login page");
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1000);
             driver.FindElement(By.Id("username")).SendKeys("administrator");
             //driver.FindElement(By.CssSelector("#username")).SendKeys("administrator");
             driver.FindElement(By.CssSelector("input[type = 'submit']")).Click();
-            driver.FindElement(By.Id("Password")).SendKeys("root");
+            driver.FindElement(By.Id("password")).SendKeys("root");
             driver.FindElement(By.CssSelector("input[type = 'submit']")).Click();
             return driver;
 

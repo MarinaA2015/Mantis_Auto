@@ -25,23 +25,28 @@ namespace mantis_auto
         public void TestAccountRegistration()
         {
             List<AccountData> accounts = app.Admin.GetAllAccounts();
-            AccountData account = new AccountData("testuser30", "password")
+            AccountData account = new AccountData("testuser47", "password")
             {
            
-                Email = "testuser30@localhost.localdomain"
+                Email = "testuser47@localhost.localdomain"
             };
             //accounts.Find(x=>x.Name == account.Name);
             if (accounts.Contains(account))
             {
-                app.Admin.DeleteAccount(account);
+                AccountData acc = accounts.Find(x=>x.Name == account.Name);
+                app.Admin.DeleteAccount(acc);
             }
             
             app.James.Delete(account);
             app.James.Add(account);
+
             Console.Out.WriteLine("exists? "+ app.James.Verify(account));
             Console.Out.WriteLine(account.Name);
             Console.Out.WriteLine(account.Password);
-            app.Registration.Register(account);
+            if (app.Login.IsLoggedIn())
+                app.Login.LogOut();
+            System.Threading.Thread.Sleep(1000);
+                app.Registration.Register(account);
         }
 
         [TestFixtureTearDown]

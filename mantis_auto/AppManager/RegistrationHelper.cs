@@ -16,6 +16,10 @@ namespace mantis_auto
 
         public void Register(AccountData account)
         {
+            //if (manager.Login.IsLoggedIn())
+             //   manager.Login.LogOut();
+            System.Threading.Thread.Sleep(1000);
+
             manager.Login.OpenMainPage();
             OpenRegistrationForm();
             FillRegistrationForm(account);

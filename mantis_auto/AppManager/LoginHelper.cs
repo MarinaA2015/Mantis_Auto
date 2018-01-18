@@ -34,7 +34,7 @@ namespace mantis_auto
             return this;
         }
 
-        private bool IsLoggedIn()
+        public bool IsLoggedIn()
         {
             System.Threading.Thread.Sleep(1000);
             return IsElementPresent(By.CssSelector("span.smaller-75"));

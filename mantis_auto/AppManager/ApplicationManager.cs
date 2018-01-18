@@ -37,6 +37,7 @@ namespace mantis_auto
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
             Admin = new AdminHelper(this,baseURL);
+            API = new APIHelper(this);
 
            
         }
@@ -68,6 +69,7 @@ namespace mantis_auto
         internal JamesHelper James { get; private set; }
         public MailHelper Mail { get; private set; }
         internal AdminHelper Admin { get; private set; }
+        internal APIHelper API { get; private set; }
 
         public static ApplicationManager GetInstance()
         {

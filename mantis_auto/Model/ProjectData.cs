@@ -33,6 +33,8 @@ namespace mantis_auto
         [Column(Name = "description")]
         public string Description { get; set; }
 
+        public string Id { get; set; }
+
 
         public override bool Equals(object other)
         {
